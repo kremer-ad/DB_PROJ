@@ -2,7 +2,10 @@ import fs = require('fs')
 
 fs.readFile('.\\models_html_element.txt',(error,data)=>{
     let rows:string[] = data.toString().split('<tr>')
-    let results =""
+    let resultsModel:string =""
+    let resultsMake:string = ""
+    let makes:string[] = []
+    let modelId = 0
     for(let row of rows.slice(1)){
         let parts:string[] = row.split('<td')
         let model:string = parts[2]
@@ -12,14 +15,20 @@ fs.readFile('.\\models_html_element.txt',(error,data)=>{
         //let year:string = parts[4]
         let yearsTags:string[] = parts[4].split('<span>')
         let years:string[] = []
-
+        if(!(make in makes)){
+            makes.push(make)
+        }
         for(let year of yearsTags.slice(1)){
             years.push(year.slice(year.indexOf(';">')+3,year.indexOf('</a>')))
         }
-        console.log(years)
         for(let year of years){
-            results = results.concat(model,',',make,',',year,'\n')
+            resultsModel = resultsModel.concat((modelId++).toString(),',',model,',',makes.indexOf(make).toString(),',',year,'\n')
         }
     }
-    fs.writeFile('results.csv',results,callback=>{})
+    fs.writeFile('resultsModel.csv',resultsModel,callback=>{})
+    makes = [...new Set(makes)]
+    for(let i=0;i<makes.length;i++){
+        resultsMake = resultsMake.concat(i.toString(),',',makes[i],'\n')
+    }
+    fs.writeFile('resultsMake.csv',resultsMake,c=>{})
 }); 
