@@ -1,6 +1,16 @@
 {
   "version": "0.2.0",
   "configurations": [
+
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "args": ["100000","0.2","resultsModel.csv","garages.csv","branches.csv"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
     {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
