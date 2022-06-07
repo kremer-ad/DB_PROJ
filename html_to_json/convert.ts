@@ -1,4 +1,4 @@
-import fs = require('fs')
+import * as fs from 'fs'
 
 fs.readFile('.\\models_html_element.txt',(error,data)=>{
     let rows:string[] = data.toString().split('<tr>')
@@ -18,15 +18,17 @@ fs.readFile('.\\models_html_element.txt',(error,data)=>{
         if(!(make in makes)){
             makes.push(make)
         }
+        makes = [...new Set(makes)]
         for(let year of yearsTags.slice(1)){
             years.push(year.slice(year.indexOf(';">')+3,year.indexOf('</a>')))
         }
+
         for(let year of years){
             resultsModel = resultsModel.concat((modelId++).toString(),',',model,',',makes.indexOf(make).toString(),',',year,'\n')
         }
     }
     fs.writeFile('resultsModel.csv',resultsModel,callback=>{})
-    makes = [...new Set(makes)]
+
     for(let i=0;i<makes.length;i++){
         resultsMake = resultsMake.concat(i.toString(),',',makes[i],'\n')
     }
