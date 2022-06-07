@@ -58,6 +58,7 @@ fs.readFile('.\\models_html_element.txt', function (error, data) {
             if (!(make in makes)) {
                 makes.push(make);
             }
+            makes = __spreadArray([], __read(new Set(makes)), false);
             try {
                 for (var _f = (e_2 = void 0, __values(yearsTags.slice(1))), _g = _f.next(); !_g.done; _g = _f.next()) {
                     var year = _g.value;
@@ -94,7 +95,6 @@ fs.readFile('.\\models_html_element.txt', function (error, data) {
         finally { if (e_1) throw e_1.error; }
     }
     fs.writeFile('resultsModel.csv', resultsModel, function (callback) { });
-    makes = __spreadArray([], __read(new Set(makes)), false);
     for (var i = 0; i < makes.length; i++) {
         resultsMake = resultsMake.concat(i.toString(), ',', makes[i], '\n');
     }
