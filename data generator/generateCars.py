@@ -2,6 +2,8 @@
 from sys import argv
 import random
 
+rand = random.SystemRandom()
+
 branches = []
 garages = []
 
@@ -18,15 +20,15 @@ def loadModels(path):
 
 
 def random_branch():
-    return random.choice(branches)
+    return rand.choice(branches)
 
 def random_garage():
-    return random.choice(garages)
+    return rand.choice(garages)
 
 def generateData(amount, notActiveRatio, models):
     data = []
     licenseNumbers = random.sample(range(10000000, 99999999), amount)
-    branch_id = random_branch()
+
     for x in range(amount):
         licenseNumber = licenseNumbers[x]
         # licenseNumber = x*100-458972 +54784123/((x % 10)+1)*((x % 100/10)+1)
@@ -38,7 +40,8 @@ def generateData(amount, notActiveRatio, models):
         garage = 'NULL'
         if not isActive:
             garage = random_garage()
-        data.append(f"{x},{int(licenseNumber)},{model},{year},{isActive},{garage},{branch_id}\n")
+        branch_id = random_branch()
+        data.append(f"{x},{int(licenseNumber)},{model},{year},{garage},{branch_id}\n")
     return data
 
 def load_files(branches_path,garages_path):
