@@ -50,9 +50,10 @@ def generate_cares(amount, results_path):
             if ok_dates(start_date, end_date, results, car_to_care[0]):
                 res = f"{i},{car_to_care[0]},{start_date.strftime(RESULTS_DATE_FORMAT)},{end_date.strftime(RESULTS_DATE_FORMAT)},{garage}"
                 results.append(res)
-                results_text += res+'\r\n'
+                results_text += res+'\n'
                 break
     results_file = open(results_path,'w')
+    print(results_text)
     results_file.write(results_text)
     results_file.close()
 
