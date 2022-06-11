@@ -58,7 +58,7 @@ def generateData(amount, notActiveRatio, models):
         branch_id = random_branch()
         color_id = random_color()
         data.append(
-            f"{x},{int(licenseNumber)},{model},{year},{garage},{branch_id},{color_id}\n")
+            f"{x},{int(licenseNumber)},{model},{year},{branch_id},{color_id}\n")
     return data
 
 
@@ -84,7 +84,7 @@ def __main__():
     models = loadModels(argv[3])
     load_files(argv[5], argv[4],argv[6])
     data = generateData(int(argv[1]), float(argv[2]), models)
-    results = open('results.csv', 'w')
+    results = open('resultsCars.csv', 'w')
     results.writelines(data)
     results.close()
 
