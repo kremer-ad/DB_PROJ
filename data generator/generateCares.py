@@ -52,7 +52,7 @@ def generate_cares(amount, results_path):
                 results.append(res)
                 results_text += res+'\r\n'
                 break
-    results_file = open(results_path)
+    results_file = open(results_path,'w')
     results_file.write(results_text)
     results_file.close()
 
