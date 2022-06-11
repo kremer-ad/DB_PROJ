@@ -69,7 +69,7 @@ def load_data(cars_stock_path, garages_path):
     garages_file = open(garages_path, encoding='utf-8')
     garage_lines = garages_file.readlines()
     for line in garage_lines:
-        garages.append(line.split(',')[0])
+        garages.append(line.split('\t')[0])
     garages_file.close()
 
 
