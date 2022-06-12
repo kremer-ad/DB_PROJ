@@ -1,0 +1,13 @@
+select licence_number, model_name, company_name, buy_year
+from (select * 
+      from cars_stock
+      left join colors
+           on colors.color_id = cars_stock.color_id
+       ) cars_filter
+left join garage
+     on garage.garage_id = cars_filter.garage_id
+left join models
+     on models.model_id = cars_filter.model_id
+left join companies
+     on companies.company_id = models.model_id
+where garage_name = 'נירים מוסך הקבוץ'

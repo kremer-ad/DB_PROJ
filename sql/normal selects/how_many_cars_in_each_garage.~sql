@@ -1,0 +1,11 @@
+select garage_name, garage_location, garage_phone_number, amount
+from 
+    (select garage.garage_id ,count(*) as amount
+     from
+           cars_stock
+     LEFT join garage
+          on cars_stock.garage_id = garage.garage_id
+     group by garage.garage_id) counter
+inner join garage
+on garage.garage_id = counter.garage_id
+order by amount desc

@@ -1,0 +1,1 @@
+create index YOMALKA_CS_COLOR_ID on CARS_STOCK (color_id);

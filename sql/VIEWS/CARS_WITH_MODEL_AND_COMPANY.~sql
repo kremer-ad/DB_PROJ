@@ -1,0 +1,14 @@
+CREATE VIEW CARS_WITH_MODEL_AND_COMPANY AS
+SELECT                  CARS_STOCK.CSID,
+                        CARS_STOCK.LICENCE_NUMBER,
+                        MODELS.MODEL_NAME,
+                        COMPANIES.COMPANY_NAME,
+                        CARS_STOCK.BUY_YEAR,
+                        CARS_STOCK.COLOR_ID,
+                        CARS_STOCK.GARAGE_ID,
+                        CARS_STOCK.BRANCH_ID
+FROM CARS_STOCK
+LEFT JOIN MODELS
+     ON MODELS.MODEL_ID = CARS_STOCK.MODEL_ID
+LEFT JOIN COMPANIES
+     ON COMPANIES.COMPANY_ID = MODELS.COMPANY_ID
