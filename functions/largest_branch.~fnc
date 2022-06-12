@@ -1,0 +1,13 @@
+create or replace function largest_branch return barklaif.branch.id%type is
+  FunctionResult barklaif.branch.id%type;
+  max_cars_val int
+begin
+  select  max(amount) into max_cars_val
+  from (select barkalif.branch.id,count(*) as amount from cars_stock
+        left join barkalif.branch
+             on cars_stock.branch_id = barkalif.branch.id
+        group by barkalif.branch.id) counter
+  
+  return(FunctionResult);
+end largest_branch;
+/

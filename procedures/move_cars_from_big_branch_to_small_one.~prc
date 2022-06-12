@@ -1,0 +1,8 @@
+create or replace procedure move_cars_from_big_branch_to_small_one is
+largest_branch_id INT;
+smallest_branch_id INT :=SMALLEST_BRANCH();
+begin
+     select LARGEST_BRANCH() into largest_branch_id from DUAL
+      
+end move_cars_from_big_branch_to_small_one;
+/
