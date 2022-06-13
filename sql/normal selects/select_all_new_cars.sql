@@ -3,5 +3,5 @@ from cars_stock
 left join models
      on models.model_id = CARS_STOCK.model_id
 left join companies
-     on models.model_id = companies.company_id
+     on models.COMPANY_ID = companies.company_id
 where buy_year >2020

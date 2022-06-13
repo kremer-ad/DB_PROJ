@@ -1,5 +1,5 @@
 select model_name,company_name,counter.amount
-from (select /*+ INDEX (CARS_STOCK CARS_STOCK_MODEL_ID) */ models.model_id,count(*) as amount from models
+from (select /*+ INDEX (TREATMENTS TREATMENTS_CSID_YOMALKA) */ models.model_id,count(*) as amount from models
       left join cars_stock
            on models.model_id = cars_stock.model_id
       left join treatments

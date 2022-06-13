@@ -1,2 +1,0 @@
--- CreateRecreate indexes 
-create bitmap index YOMALKA_CS_GARAGE_ID on CARS_STOCK (GARAGE_ID);
