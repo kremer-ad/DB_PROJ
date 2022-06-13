@@ -5,7 +5,7 @@ from
       from  cars_stock
       left join colors
            on colors.color_id = cars_stock.color_id
-      where color_name = 'Black' and cars_stock.garage_id IS NULL) filtered
+      where color_name = 'Black') filtered
 
  left join models
        on models.model_id = filtered.model_id

@@ -1,0 +1,4 @@
+SQL		: which car got most fixes
+BEFORE  	: 0.388 (no download)
+AFTER   	: 0.157 (no download)
+IMPROVMENT	: ~60%
